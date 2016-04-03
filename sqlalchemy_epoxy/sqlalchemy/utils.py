@@ -4,8 +4,8 @@ __all__ = ["load_scalar_type"]
 
 
 def add_query_args(args, query_args):
-    new_args = args.update(query_args)
-    return new_args
+    args.update(query_args)
+    return args
 
 
 def load_scalar_type(registry):

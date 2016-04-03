@@ -1,5 +1,6 @@
 from flask_sqlalchemy import BaseQuery
 from sqlalchemy import inspect, func
+from sqlalchemy.orm.query import Query
 from graphql.core.error import GraphQLError
 
 from sqlalchemy_epoxy.sqlalchemy.custom_scalar_types import to_delimiter_case
@@ -24,10 +25,6 @@ def resolve_sqlalchemy(obj, args, info, model, query=None, additional_filters=No
     Generic Function for resolving a single alchemy model.
     '''
     args, before, after, order, first, last, group = get_dict_args(args)
-    if query:
-        query = query
-    else:
-        query = model.query
     if additional_filters:
         query = query.filter(*additional_filters)
     query = add_filters(obj, args, info, model, query)
@@ -36,11 +33,10 @@ def resolve_sqlalchemy(obj, args, info, model, query=None, additional_filters=No
         obj, args, info, model, query, before, after, order, first, last, group)
     if single:
         return query.first()
-    elif query:
-        if isinstance(query, BaseQuery):
+    else:
+        if isinstance(query, BaseQuery) or isinstance(query, Query):
             return query.all()
         return query
-    return query.all()
 
 
 def visit_fields(obj, args, info, model, query, groups):

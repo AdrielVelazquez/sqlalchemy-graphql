@@ -4,7 +4,7 @@ from tests.sample_models import ChildModel as BaseChildModel, ParentModel as Bas
 from sqlalchemy_epoxy.sqlalchemy.utils import add_query_args
 from sqlalchemy_epoxy.sqlalchemy.query import resolve_sqlalchemy
 
-model_args = add_query_args({"id": R.Int, "name": R.String}, esql.query_args)
+model_args = add_query_args({"id": R.Int, "name": R.String, "ids": R.Int.List}, esql.query_args)
 
 
 class ParentModel(R.Implements.FuncBase):
@@ -30,6 +30,7 @@ class Query(R.ObjectType):
     child_model = R.ChildModel(args=model_args)
     parent_models = R.ParentModel.List(args=model_args)
     child_models = R.ChildModel.List(args=model_args)
+    additional_filters = R.ParentModel(args=model_args)
 
     def resolve_parent_model(self, obj, args, info):
         query = session.query(BaseParentModel)
@@ -46,3 +47,10 @@ class Query(R.ObjectType):
     def resolve_child_models(self, obj, args, info):
         query = session.query(BaseChildModel)
         return resolve_sqlalchemy(obj, args, info, BaseChildModel)
+
+    def resolve_additional_filters(self, obj, args, info):
+        query = session.query(BaseParentModel)
+        additional_filters = [BaseParentModel.name == "Adriel"]
+        return resolve_sqlalchemy(obj, args, info, BaseParentModel,
+            query=query, single=True, additional_filters=additional_filters
+        )
