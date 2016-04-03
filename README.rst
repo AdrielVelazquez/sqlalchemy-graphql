@@ -76,8 +76,9 @@ include the esql.quey_args. I created a global varaible below, but you can add t
 
 
 .. code:: python
-    from youe_application import R, esql
-    from youe_application.your_sqlalchemy_models import ChildModel as BaseChildModel, ParentModel as BaseParentModel, session
+
+    from your_application import R, esql
+    from your_application.your_sqlalchemy_models import ChildModel as BaseChildModel, ParentModel as BaseParentModel, session
 
     from sqlalchemy_graphql.epoxy.utils import add_query_args
     from sqlalchemy_graphql.epoxy.query import resolve_sqlalchemy
@@ -128,7 +129,7 @@ include the esql.quey_args. I created a global varaible below, but you can add t
 
 You'll notice in the resolves for the Query, we're using the helper function resolve_sqlalchemy, proided by sqlalchemy-graphql to resolve any query arguements that are going to be used. 
 
-All that needs to be passed in is a Base query that has the SQLAlchemy model as he first argument,
+All that needs to be passed in is a Base query that has the SQLAlchemy model as the first argument,
 and you're good to go. 
 
 
@@ -145,12 +146,14 @@ You can essentially do anything that the SQLAlchemy func offers you to do
 The basic formating is:
 
 .. code:: python
+
     func(field:"{YOUR TARGET ATTRIBUTE}", op:"YOUR OPERATION")
     func(field:"id", op:"min")}
     func(field:"id", op:"max")}
     func(field:"count", op:"sum")}
 
 .. code:: python
+
     test_parent_1 = ParentModel(name="Adriel")
     test_parent_2 = ParentModel(name="Carolina")
     session.add(test_parent_1)
