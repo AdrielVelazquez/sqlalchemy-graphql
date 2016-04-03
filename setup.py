@@ -1,4 +1,6 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
+
 
 setup(
     name="sqlalchemy_graphql",
@@ -7,7 +9,7 @@ setup(
     long_description=open("README.rst", "r").read(),
     author="Adriel Velazquez",
     author_email="adrielvelazquez@gmail.com",
-    packages=['epoxy'],
+    packages=find_packages(exclude=["tests"]),
     zip_safe=False,
     install_requires=[
         "sqlalchemy > 0.9",
