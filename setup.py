@@ -1,23 +1,17 @@
 from setuptools import setup
 
 setup(
-    name="sqlalchemy_sphinx",
-    version="0.8.3",
-    description="SQLAlchemy extension for dealing with SphinxQL",
+    name="sqlalchemy_graphql",
+    version="0.1.1",
+    description="GraphQL extension for dealing with SQLAlchemy",
     long_description=open("README.rst", "r").read(),
-    author="SET by Conversant",
+    author="Adriel Velazquez",
     author_email="adrielvelazquez@gmail.com",
-    packages=['sqlalchemy_sphinx'],
+    packages=['epoxy'],
     zip_safe=False,
     install_requires=[
         "sqlalchemy > 0.9",
+        "graphql-epoxy"
     ],
     tests_require=['tox'],
-    entry_points={
-     'sqlalchemy.dialects': [
-          'sphinx = sqlalchemy_sphinx.mysqldb:Dialect',
-          'sphinx.cymysql = sqlalchemy_sphinx.cymysql:Dialect',
-          'sphinx.mysqldb = sqlalchemy_sphinx.mysqldb:Dialect'
-          ]
-    }
 )

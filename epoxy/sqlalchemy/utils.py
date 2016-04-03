@@ -3,7 +3,7 @@ from sqlalchemy.util._collections import AbstractKeyedTuple
 __all__ = ["load_scalar_type"]
 
 
-def load_scalar_type():
+def load_scalar_type(registry):
     '''
     Loads all custom Scalar types on the TypeRegistry
 
