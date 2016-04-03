@@ -1,22 +1,17 @@
 from sqlalchemy.util._collections import AbstractKeyedTuple
 
-from app.models.custom_enums import CountryEnum, MediaTypeEnum
-
 __all__ = ["load_scalar_type"]
 
 
-def load_scalar_type(R):
+def load_scalar_type():
     '''
     Loads all custom Scalar types on the TypeRegistry
 
     :param R: TypeRegistry for the SQLAlchemy Models
     '''
-    from app.graphql.custom_scalar_types import DateTimeType, DictionaryType, CamelCaseStringType
-    R(DateTimeType)
-    R(DictionaryType)
-    R(CountryEnum)
-    R(MediaTypeEnum)
-    R(CamelCaseStringType)
+    from epoxy.sqlalchemy.custom_scalar_types import DictionaryType, CamelCaseStringType
+    registry(DictionaryType)
+    registry(CamelCaseStringType)
 
 
 def flatten_keyed_tuple(keyed_tuple, model):
