@@ -143,7 +143,12 @@ but here is some basic queries you can now do with your universal func.
 You can essentially do anything that the SQLAlchemy func offers you to do
 
 The basic formating is:
-``func(field:"{YOUR TARGET ATTRIBUTE}", op:"YOUR OPERATION")``
+
+.. code:: python
+    func(field:"{YOUR TARGET ATTRIBUTE}", op:"YOUR OPERATION")
+    func(field:"id", op:"min")}
+    func(field:"id", op:"max")}
+    func(field:"count", op:"sum")}
 
 .. code:: python
     test_parent_1 = ParentModel(name="Adriel")
@@ -178,47 +183,3 @@ The basic formating is:
         ]
     }
     '''
-
-Samples:
-
-``func(field:"id", op:"min")}``
-
-``func(field:"id", op:"max")}``
-
-``func(field:"count", op:"sum")}``
-
-.. code:: python
-    test_parent_1 = ParentModel(name="Adriel")
-    test_parent_2 = ParentModel(name="Carolina")
-    session.add(test_parent_1)
-    session.add(test_parent_2)
-    session.commit()
-
-    schema = R.Schema(R.Query)
-
-    # Summing
-    query = '{parentModel {idSum: func(field:"id", op:"sum")}}'
-    results = graphql(schema, query)
-    value = test_parent_1.id + test_parent_2.id
-    assert results.data['parentModel']['idSum'] == value
-
-
-    # Count Distincts
-    query = '{parentModels {distinctName: count(distinct:"name")}}'
-    results = graphql(schema, query)
-    # results.data == {'parentModels': [{'distinctName': 2}]}
-
-
-    # Ordering
-    query = '{parentModels (first: 1, after:"Adriel", order:["name"]){id, name}}'
-    results = graphql(schema, query)
-
-    '''results.data
-    {
-        'parentModels': [
-            {'name': 'Carolina', 'id': test_parent_2.id}
-        ]
-    }
-    '''
-
-
