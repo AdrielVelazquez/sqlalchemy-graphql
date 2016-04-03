@@ -9,7 +9,7 @@ def load_scalar_type(registry):
 
     :param R: TypeRegistry for the SQLAlchemy Models
     '''
-    from epoxy.sqlalchemy.custom_scalar_types import DictionaryType, CamelCaseStringType
+    from sqlalchemy_epoxy.sqlalchemy.custom_scalar_types import DictionaryType, CamelCaseStringType
     registry(DictionaryType)
     registry(CamelCaseStringType)
 

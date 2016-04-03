@@ -2,8 +2,8 @@ from flask_sqlalchemy import BaseQuery
 from sqlalchemy import inspect, func
 from graphql.core.error import GraphQLError
 
-from epoxy.sqlalchemy.custom_scalar_types import to_delimiter_case
-from epoxy.sqlalchemy.utils import resolve_keyed_tuples
+from sqlalchemy_epoxy.sqlalchemy.custom_scalar_types import to_delimiter_case
+from sqlalchemy_epoxy.sqlalchemy.utils import resolve_keyed_tuples
 
 
 def get_dict_args(args):
