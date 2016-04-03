@@ -1,4 +1,4 @@
-from sqlalchemy_epoxy.sqlalchemy.utils import load_scalar_type
+from sqlalchemy_graphql.epoxy.utils import load_scalar_type
 
 
 class EpoxySQLAlchemy(object):

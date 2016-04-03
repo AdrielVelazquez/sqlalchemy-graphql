@@ -1,6 +1,6 @@
 from epoxy import TypeRegistry
 
-from sqlalchemy_epoxy.sqlalchemy import EpoxySQLAlchemy
+from sqlalchemy_graphql.epoxy import EpoxySQLAlchemy
 
 R = TypeRegistry()
 esql = EpoxySQLAlchemy()

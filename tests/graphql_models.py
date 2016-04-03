@@ -1,8 +1,8 @@
 from tests import R, esql
 from tests.sample_models import ChildModel as BaseChildModel, ParentModel as BaseParentModel, session
 
-from sqlalchemy_epoxy.sqlalchemy.utils import add_query_args
-from sqlalchemy_epoxy.sqlalchemy.query import resolve_sqlalchemy
+from sqlalchemy_graphql.epoxy.utils import add_query_args
+from sqlalchemy_graphql.epoxy.query import resolve_sqlalchemy
 
 model_args = add_query_args({"id": R.Int, "name": R.String, "ids": R.Int.List}, esql.query_args)
 

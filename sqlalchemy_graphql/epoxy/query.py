@@ -3,8 +3,8 @@ from sqlalchemy import inspect, func
 from sqlalchemy.orm.query import Query
 from graphql.core.error import GraphQLError
 
-from sqlalchemy_epoxy.sqlalchemy.custom_scalar_types import to_delimiter_case
-from sqlalchemy_epoxy.sqlalchemy.utils import resolve_keyed_tuples
+from sqlalchemy_graphql.epoxy.custom_scalar_types import to_delimiter_case
+from sqlalchemy_graphql.epoxy.utils import resolve_keyed_tuples
 
 
 def get_dict_args(args):

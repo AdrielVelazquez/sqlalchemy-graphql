@@ -107,7 +107,7 @@ def test_distinct_count():
 
 
 def test_count_sanity():
-    from sqlalchemy_epoxy.sqlalchemy.query import visit_count
+    from sqlalchemy_graphql.epoxy.query import visit_count
     from sqlalchemy.sql.elements import Label
     fields = type("something", (), {"arguments": None})
     returned = visit_count(ParentModel, fields())
