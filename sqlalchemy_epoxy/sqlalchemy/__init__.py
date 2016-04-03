@@ -28,7 +28,7 @@ class EpoxySQLAlchemy(object):
         self.query_args["match"] = registry.DictionaryType
 
         class FuncBase(registry.Interface):
-            func = registry.DictionaryType(args={"field": registry.CamelCaseString, "op": registry.String}),
+            func = registry.DictionaryType(args={"field": registry.CamelCaseString, "op": registry.String})
             count = registry.Int(args={"distinct": registry.CamelCaseString})
 
             def resolve_func(self, obj, args, info):
@@ -42,3 +42,5 @@ class EpoxySQLAlchemy(object):
                 if args.get("distinct"):
                     target = "{}_{}_{}".format(args.get("distinct"), "distinct", "count")
                 return getattr(obj, target)
+
+        self.FuncBase = FuncBase

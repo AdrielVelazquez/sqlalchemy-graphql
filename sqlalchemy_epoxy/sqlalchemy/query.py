@@ -19,13 +19,13 @@ def get_dict_args(args):
 
 
 @resolve_keyed_tuples
-def resolve_sqlalchemy(obj, args, info, model, related=None, additional_filters=None, single=False):
+def resolve_sqlalchemy(obj, args, info, model, query=None, additional_filters=None, single=False):
     '''
     Generic Function for resolving a single alchemy model.
     '''
     args, before, after, order, first, last, group = get_dict_args(args)
-    if related:
-        query = related
+    if query:
+        query = query
     else:
         query = model.query
     if additional_filters:
@@ -36,7 +36,7 @@ def resolve_sqlalchemy(obj, args, info, model, related=None, additional_filters=
         obj, args, info, model, query, before, after, order, first, last, group)
     if single:
         return query.first()
-    elif related:
+    elif query:
         if isinstance(query, BaseQuery):
             return query.all()
         return query

@@ -3,9 +3,14 @@ from sqlalchemy.util._collections import AbstractKeyedTuple
 __all__ = ["load_scalar_type"]
 
 
+def add_query_args(args, query_args):
+    new_args = args.update(query_args)
+    return new_args
+
+
 def load_scalar_type(registry):
     '''
-    Loads all custom Scalar types on the TypeRegistry
+    Load all custom Scalar types on the TypeRegistry.
 
     :param R: TypeRegistry for the SQLAlchemy Models
     '''
@@ -27,8 +32,8 @@ def resolve_keyed_tuples(func):
     from functools import wraps
 
     @wraps(func)
-    def func_wrapper(self, obj, args, info, model, single=False, related=None, additional_filters=None):
-        results = func(self, obj, args, info, model, related, additional_filters, single)
+    def func_wrapper(obj, args, info, model, single=False, query=None, additional_filters=None):
+        results = func(obj, args, info, model, query, additional_filters, single)
         if isinstance(results, list):
             new_results = []
             for result in results:

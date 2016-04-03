@@ -1,39 +1,7 @@
-import datetime
-
 from graphql.core.language import ast
 from graphql.core.type import GraphQLScalarType
 
-__all__ = ["DateTimeType", "DictionaryType", "CamelCaseStringType", "to_delimiter_case"]
-
-
-class DateTimeType(object):
-
-    @staticmethod
-    def serialize(dt):
-        '''
-        :param dt: datetime object
-        :type dt: datetime
-        :return: returns datetime in isoformat
-        '''
-        assert isinstance(dt, datetime.datetime)
-        return dt.isoformat()
-
-    @staticmethod
-    def parse_literal(node):
-        '''
-        :param node: GraphQL Epoxy Query node
-        :return: Conditional Return if node value is a string and converts to datetime object
-        '''
-        if isinstance(node, ast.StringValue):
-            return datetime.datetime.strptime(node.value, "%Y-%m-%dT%H:%M:%S.%f")
-
-    @staticmethod
-    def parse_value(value):
-        '''
-        :param value: datetime string
-        :return: datetime object
-        '''
-        return datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+__all__ = ["DictionaryType", "CamelCaseStringType", "to_delimiter_case"]
 
 
 def to_delimiter_case(arg_str, delimiter="_"):
@@ -87,11 +55,6 @@ class DictionaryType(object):
     @staticmethod
     def parse_value(value):
         return value
-
-
-DateTimeType = GraphQLScalarType(name='DateTime', serialize=DateTimeType.serialize,
-                                 parse_literal=DateTimeType.parse_literal,
-                                 parse_value=DateTimeType.parse_value)
 
 CamelCaseStringType = GraphQLScalarType(name='CamelCaseString', serialize=CamelCaseString.serialize,
                                  parse_literal=CamelCaseString.parse_literal,
