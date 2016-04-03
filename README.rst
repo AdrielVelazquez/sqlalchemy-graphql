@@ -6,6 +6,8 @@ SQLAlchemy GraphQL
 SQLAlchemy GraphQL is a plugin for GraphQL Epoxy that provides universal functions for
 SQLAlchemy models being used for GraphQL
 
+**Graphene Support Coming Soon**
+
 Installation
 ------------
 
