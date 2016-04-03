@@ -146,9 +146,14 @@ The basic formating is:
 ``func(field:"{YOUR TARGET ATTRIBUTE}", op:"YOUR OPERATION")``
 
 Samples:
+
 ``func(field:"id", op:"min")}``
+
 ``func(field:"id", op:"max")}``
+
 ``func(field:"count", op:"sum")}``
+
+
 
 .. code:: python
     test_parent_1 = ParentModel(name="Adriel")
