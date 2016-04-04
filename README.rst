@@ -1,5 +1,5 @@
 SQLAlchemy GraphQL 
-=================
+===================
 
 
 SQLAlchemy GraphQL is a plugin for GraphQL Epoxy that provides universal functions for
@@ -135,7 +135,7 @@ and you're good to go.
 
 
 Examples
------
+--------
 
 
 The tests provided has a ton of examples, 
