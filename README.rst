@@ -1,6 +1,16 @@
 SQLAlchemy GraphQL 
 ===================
 
+|travis| |pypi| |coveralls|
+
+.. |travis| image:: https://travis-ci.org/AdrielVelazquez/sqlalchemy-graphql.svg?branch=master
+    :target: https://travis-ci.org/AdrielVelazquez/sqlalchemy-graphql
+    
+.. |pypi| image:: https://badge.fury.io/py/sqlalchemy-graphql.svg
+    :target: https://badge.fury.io/py/sqlalchemy-graphql
+    
+.. |coveralls| image:: https://coveralls.io/repos/github/AdrielVelazquez/sqlalchemy-graphql/badge.svg?branch=master 
+    :target: https://coveralls.io/github/AdrielVelazquez/sqlalchemy-graphql?branch=master
 
 SQLAlchemy GraphQL is a plugin for GraphQL Epoxy that provides universal functions for
 SQLAlchemy models being used for GraphQL
