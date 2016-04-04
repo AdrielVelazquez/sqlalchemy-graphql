@@ -1,10 +1,9 @@
-from setuptools import setup, find_packages
-
-
+from distutils.core import setup
+from setuptools import find_packages
 
 setup(
     name="sqlalchemy_graphql",
-    version="0.1.1",
+    version="1.0",
     description="GraphQL extension for dealing with SQLAlchemy",
     long_description=open("README.rst", "r").read(),
     author="Adriel Velazquez",
