@@ -1,7 +1,6 @@
 SQLAlchemy GraphQL 
 =================
 
-|travis| |pypi| |coveralls|
 
 SQLAlchemy GraphQL is a plugin for GraphQL Epoxy that provides universal functions for
 SQLAlchemy models being used for GraphQL
@@ -164,20 +163,17 @@ The basic formating is:
 
     schema = R.Schema(R.Query)
 
-    # Summing
     query = '{parentModel {idSum: func(field:"id", op:"sum")}}'
     results = graphql(schema, query)
     value = test_parent_1.id + test_parent_2.id
     assert results.data['parentModel']['idSum'] == value
 
 
-    # Count Distincts
     query = '{parentModels {distinctName: count(distinct:"name")}}'
     results = graphql(schema, query)
     # results.data == {'parentModels': [{'distinctName': 2}]}
 
 
-    # Ordering
     query = '{parentModels (first: 1, after:"Adriel", order:["name"]){id, name}}'
     results = graphql(schema, query)
 
