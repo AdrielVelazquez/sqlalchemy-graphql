@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="sqlalchemy_graphql",
-    version="1.2",
+    version="1.3",
     description="GraphQL extension for dealing with SQLAlchemy",
     long_description=open("README.rst", "r").read(),
     author="Adriel Velazquez",

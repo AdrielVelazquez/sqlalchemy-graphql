@@ -171,7 +171,7 @@ The basic formating is:
 
     query = '{parentModels {distinctName: count(distinct:"name")}}'
     results = graphql(schema, query)
-    # results.data == {'parentModels': [{'distinctName': 2}]}
+    results.data == {'parentModels': [{'distinctName': 2}]}
 
 
     query = '{parentModels (first: 1, after:"Adriel", order:["name"]){id, name}}'
